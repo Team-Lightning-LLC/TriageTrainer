@@ -601,8 +601,6 @@
 
     <section class="demo" id="demo">
         <div class="container">
-           
-            
           <section class="demo" id="demo">
     <div class="container">
         <h2>Try a Demo Case</h2>
@@ -862,3 +860,207 @@ document.addEventListener('DOMContentLoaded', function() {
     userInput.focus();
 });
 </script>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Students</h3>
+                    <div class="price">$19<span>/month</span></div>
+                    <ul>
+                        <li>Access to 50+ beginner cases</li>
+                        <li>Basic performance tracking</li>
+                        <li>Core neurological conditions</li>
+                        <li>Monthly new cases</li>
+                        <li>Mobile access</li>
+                    </ul>
+                    <a href="#" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card popular">
+                    <h3>Residents</h3>
+                    <div class="price">$39<span>/month</span></div>
+                    <ul>
+                        <li>Access to 200+ cases (all levels)</li>
+                        <li>Advanced performance analytics</li>
+                        <li>Comprehensive condition coverage</li>
+                        <li>Weekly new cases</li>
+                        <li>Mobile access</li>
+                        <li>Community discussion forum</li>
+                    </ul>
+                    <a href="#" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Institutions</h3>
+                    <div class="price">Custom</div>
+                    <ul>
+                        <li>Unlimited access for all users</li>
+                        <li>Custom case development</li>
+                        <li>Integration with learning platforms</li>
+                        <li>Student/resident performance tracking</li>
+                        <li>Administrative dashboard</li>
+                        <li>Dedicated support</li>
+                    </ul>
+                    <a href="#" class="btn">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Your email">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject">
+                        <option value="">Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Technical Support</option>
+                        <option value="pricing">Pricing Question</option>
+                        <option value="partnership">Partnership Opportunity</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="Your message"></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo">Neuro<span>CaseTrainer</span></div>
+            <ul class="footer-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+            <p>&copy; 2025 NeuroCaseTrainer. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Account Access</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-tabs">
+                <div class="modal-tab active" data-form="login-form">Login</div>
+                <div class="modal-tab" data-form="signup-form">Sign Up</div>
+            </div>
+            <div class="modal-body">
+                <form class="modal-form active" id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <p style="margin-top: 1rem; text-align: center;">
+                        <a href="#" style="color: var(--primary);">Forgot password?</a>
+                    </p>
+                </form>
+                <form class="modal-form" id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-type">I am a:</label>
+                        <select id="user-type" required>
+                            <option value="">Select</option>
+                            <option value="student">Medical Student</option>
+                            <option value="resident">Resident</option>
+                            <option value="physician">Practicing Physician</option>
+                            <option value="educator">Medical Educator</option>
+                            <option value="other">Other Healthcare Professional</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Demo case responses
+        const caseResponses = {
+            "headache": [
+                "*winces slightly as he shifts in his chair* Yes, the headaches usually start on the right side of my head, right around here *points to his right temple*. They can get pretty bad, like a 7 or 8 out of 10.",
+                "*rubs his neck while thinking* They usually come on gradually over about 30 minutes. I'll start feeling a bit off, then it builds up. They typically last for several hours, sometimes all day if I don't take anything for it.",
+                "*looking slightly embarrassed* Well, I've been taking a lot of over-the-counter pain relievers. Probably more than I should, almost daily for the last month or so.",
+                "*appears thoughtful* Now that you mention it, sometimes I do see these flickering lights in my vision before the headache starts. Like a jagged line that blocks part of what I'm seeing. Is that important?",
+                "*shakes head* No history of head injuries. I've always been pretty healthy, just the usual stuff. Had my appendix out when I was in college."
+            ],
+            "lifestyle": [
+                "*sighs heavily* Work has been really stressful lately. I'm a software engineer, and we're on a tight deadline for a big project. I've been putting in 60-hour weeks for the past couple months.",
+                "*looks down* My sleep hasn't been great, to be honest. Usually 5-6 hours, and it's not quality sleep. I wake up a lot thinking about work stuff.",
+                "*shrugs* I probably have more coffee than I should. Maybe 4-5 cups throughout the day just to keep going. I have a couple glasses of wine most nights to help unwind.",
+                "*looks slightly embarrassed* Exercise? Not lately. I used to run regularly but haven't had time with this project. It's been about 3 months since I've done any real exercise."
+            ],
+            "family": [
+                "*nods* Yes, my mom used to get bad headaches. She called them migraines. She would have to lie down in a dark room when they came on.",
+                "*thinks for a moment* No, no one in my family has had any serious neurological conditions that I'm aware of. Just the headaches my mom had."
+            ],
+            "symptoms": [
+                "*looks concerned* Sometimes I do feel a bit nauseous with the headaches, especially if they're really bad. I haven't actually thrown up, though.",
+                "*squints slightly* Light can definitely make it worse. Bright computer screens are the worst - which is tough given my job.",
+                "*hesitates* I have noticed I'm more irritable lately. My wife says I'm not myself. I've been snapping at the kids over little things, which isn't like me.",
+                "*thinking* No, I haven't noticed any weakness or numbness. Just the headaches and sometimes feeling a bit dizzy."
+            ]
+        };
+
+        // Simple simulation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const userInput = document.getElementById('user-input');
+            const sendButton = document.getElementById('send-message');
+            const chatMessages = document.querySelector('.chat-messages');
+            const startSimulationBtn = document.getElementById('start-simulation');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const loginLink = document.getElementById('login-link');
+            const loginModal = document.getElementById('login-modal');
+            const closeModal = document.querySelector('.close');
+            const modalTabs = document.querySelectorAll('.modal-tab');
+            const modalForms = document.querySelectorAll('.modal-form');
+            const demoLink = document.getElementById('demo-link');
+            
+            // Tab functionality
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    button.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
