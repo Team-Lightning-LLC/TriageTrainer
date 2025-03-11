@@ -601,264 +601,245 @@
 
     <section class="demo" id="demo">
         <div class="container">
-           
+            <h2>Try a Demo Case</h2>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="case-info">Case Info</button>
+                <button class="tab-button" data-tab="simulation">Simulation</button>
+            </div>
             
-          <section class="demo" id="demo">
-    <div class="container">
-        <h2>Try a Demo Case</h2>
-        
-        <div class="patient-info">
-            <h3>Demo Case: New Patient Consultation</h3>
-            <p><strong>Patient:</strong> Michael Thompson, 45-year-old male</p>
-            <p><strong>Setting:</strong> Neurology outpatient clinic</p>
-            <p><strong>Chief Complaint:</strong> "I've been having these strange headaches for about 2 months now."</p>
-            <p><strong>Note:</strong> Limited to 3 questions in this demo. Subscribe for full access.</p>
-        </div>
-        
-        <div class="chat-container">
-            <div class="chat-messages" id="chat-messages">
-                <div class="message patient">
-                    <p><em>*A middle-aged man sits in the examination chair, occasionally rubbing his right temple. He seems somewhat tense but makes good eye contact as you enter.*</em></p>
-                    <p>"Hi doctor, I'm Michael. Thanks for seeing me today. I've been dealing with these headaches that just won't quit."</p>
+            <div class="tab-content active" id="case-info">
+                <div class="patient-info">
+                    <h3>Demo Case: New Patient Consultation</h3>
+                    <p><strong>Patient:</strong> Michael Thompson, 45-year-old male</p>
+                    <p><strong>Setting:</strong> Neurology outpatient clinic</p>
+                    <p><strong>Chief Complaint:</strong> "I've been having these strange headaches for about 2 months now."</p>
+                    <p><strong>Difficulty Level:</strong> Intermediate</p>
+                    <p class="note">This is a simplified demonstration case. Full access provides more detailed cases with complete physical examination capabilities, lab ordering, and comprehensive feedback.</p>
+                </div>
+                <button class="btn" id="start-simulation">Start Simulation</button>
+            </div>
+            
+            <div class="tab-content" id="simulation">
+                <div class="chat-container">
+                    <div class="chat-messages">
+                        <div class="message patient">
+                            <p><em>*A middle-aged man sits in the examination chair, occasionally rubbing his right temple. He seems somewhat tense but makes good eye contact as you enter.*</em></p>
+                            <p>"Hi doctor, I'm Michael. Thanks for seeing me today. I've been dealing with these headaches that just won't quit."</p>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Type your question or response..." id="user-input">
+                        <button id="send-message">Send</button>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button class="btn" id="hint-btn">Get Hint</button>
+                    <button class="btn" id="diagnosis-btn">Submit Diagnosis</button>
                 </div>
             </div>
-            <div class="chat-input">
-                <input type="text" placeholder="Type your question here..." id="user-input">
-                <button id="send-message">Ask</button>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Students</h3>
+                    <div class="price">$19<span>/month</span></div>
+                    <ul>
+                        <li>Access to 50+ beginner cases</li>
+                        <li>Basic performance tracking</li>
+                        <li>Core neurological conditions</li>
+                        <li>Monthly new cases</li>
+                        <li>Mobile access</li>
+                    </ul>
+                    <a href="#" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card popular">
+                    <h3>Residents</h3>
+                    <div class="price">$39<span>/month</span></div>
+                    <ul>
+                        <li>Access to 200+ cases (all levels)</li>
+                        <li>Advanced performance analytics</li>
+                        <li>Comprehensive condition coverage</li>
+                        <li>Weekly new cases</li>
+                        <li>Mobile access</li>
+                        <li>Community discussion forum</li>
+                    </ul>
+                    <a href="#" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Institutions</h3>
+                    <div class="price">Custom</div>
+                    <ul>
+                        <li>Unlimited access for all users</li>
+                        <li>Custom case development</li>
+                        <li>Integration with learning platforms</li>
+                        <li>Student/resident performance tracking</li>
+                        <li>Administrative dashboard</li>
+                        <li>Dedicated support</li>
+                    </ul>
+                    <a href="#" class="btn">Contact Sales</a>
+                </div>
             </div>
-            <div class="questions-remaining">Questions remaining: <span id="questions-count">3</span></div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Your email">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject">
+                        <option value="">Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Technical Support</option>
+                        <option value="pricing">Pricing Question</option>
+                        <option value="partnership">Partnership Opportunity</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="Your message"></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo">Neuro<span>CaseTrainer</span></div>
+            <ul class="footer-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+            <p>&copy; 2025 NeuroCaseTrainer. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Account Access</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-tabs">
+                <div class="modal-tab active" data-form="login-form">Login</div>
+                <div class="modal-tab" data-form="signup-form">Sign Up</div>
+            </div>
+            <div class="modal-body">
+                <form class="modal-form active" id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <p style="margin-top: 1rem; text-align: center;">
+                        <a href="#" style="color: var(--primary);">Forgot password?</a>
+                    </p>
+                </form>
+                <form class="modal-form" id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-type">I am a:</label>
+                        <select id="user-type" required>
+                            <option value="">Select</option>
+                            <option value="student">Medical Student</option>
+                            <option value="resident">Resident</option>
+                            <option value="physician">Practicing Physician</option>
+                            <option value="educator">Medical Educator</option>
+                            <option value="other">Other Healthcare Professional</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button>
+                </form>
+            </div>
         </div>
     </div>
-</section>
 
-<!-- Add this CSS to your existing styles (can be added at the end of your current CSS) -->
-<style>
-    .chat-container {
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        margin-top: 20px;
-        overflow: hidden;
-        background-color: white;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    .chat-messages {
-        height: 350px;
-        overflow-y: auto;
-        padding: 20px;
-        background-color: #f9f9f9;
-    }
-    
-    .message {
-        margin-bottom: 15px;
-        padding: 12px 15px;
-        border-radius: 8px;
-        max-width: 85%;
-        position: relative;
-    }
-    
-    .message.patient {
-        background-color: #e1f5fe;
-        border-left: 3px solid var(--primary);
-        margin-right: auto;
-    }
-    
-    .message.user {
-        background-color: #e8f5e9;
-        border-left: 3px solid var(--success);
-        margin-left: auto;
-        text-align: right;
-    }
-    
-    .chat-input {
-        display: flex;
-        padding: 15px;
-        border-top: 1px solid #ddd;
-        background-color: white;
-    }
-    
-    .chat-input input {
-        flex-grow: 1;
-        padding: 12px 15px;
-        border: 1px solid #ddd;
-        border-radius: 30px;
-        font-size: 16px;
-        outline: none;
-    }
-    
-    .chat-input input:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-    }
-    
-    .chat-input button {
-        padding: 12px 25px;
-        margin-left: 10px;
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 30px;
-        cursor: pointer;
-        font-weight: bold;
-    }
-    
-    .chat-input button:hover {
-        background-color: #2980b9;
-    }
-    
-    .patient-info {
-        background-color: #f8f9fa;
-        padding: 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        border-left: 4px solid var(--secondary);
-    }
-    
-    .questions-remaining {
-        padding: 10px 15px;
-        text-align: right;
-        color: #666;
-        font-size: 14px;
-        border-top: 1px solid #eee;
-    }
-    
-    /* Loading animation for when waiting for GPT response */
-    .loading {
-        display: flex;
-        padding: 10px 15px;
-        align-items: center;
-    }
-    
-    .loading .dots {
-        display: flex;
-        margin-left: 10px;
-    }
-    
-    .loading .dots span {
-        width: 8px;
-        height: 8px;
-        margin: 0 3px;
-        background-color: #3498db;
-        border-radius: 50%;
-        animation: loading 1.4s infinite ease-in-out both;
-    }
-    
-    .loading .dots span:nth-child(1) {
-        animation-delay: -0.32s;
-    }
-    
-    .loading .dots span:nth-child(2) {
-        animation-delay: -0.16s;
-    }
-    
-    @keyframes loading {
-        0%, 80%, 100% { 
-            transform: scale(0);
-        } 
-        40% { 
-            transform: scale(1.0);
-        }
-    }
-</style>
+    <script>
+        // Demo case responses
+        const caseResponses = {
+            "headache": [
+                "*winces slightly as he shifts in his chair* Yes, the headaches usually start on the right side of my head, right around here *points to his right temple*. They can get pretty bad, like a 7 or 8 out of 10.",
+                "*rubs his neck while thinking* They usually come on gradually over about 30 minutes. I'll start feeling a bit off, then it builds up. They typically last for several hours, sometimes all day if I don't take anything for it.",
+                "*looking slightly embarrassed* Well, I've been taking a lot of over-the-counter pain relievers. Probably more than I should, almost daily for the last month or so.",
+                "*appears thoughtful* Now that you mention it, sometimes I do see these flickering lights in my vision before the headache starts. Like a jagged line that blocks part of what I'm seeing. Is that important?",
+                "*shakes head* No history of head injuries. I've always been pretty healthy, just the usual stuff. Had my appendix out when I was in college."
+            ],
+            "lifestyle": [
+                "*sighs heavily* Work has been really stressful lately. I'm a software engineer, and we're on a tight deadline for a big project. I've been putting in 60-hour weeks for the past couple months.",
+                "*looks down* My sleep hasn't been great, to be honest. Usually 5-6 hours, and it's not quality sleep. I wake up a lot thinking about work stuff.",
+                "*shrugs* I probably have more coffee than I should. Maybe 4-5 cups throughout the day just to keep going. I have a couple glasses of wine most nights to help unwind.",
+                "*looks slightly embarrassed* Exercise? Not lately. I used to run regularly but haven't had time with this project. It's been about 3 months since I've done any real exercise."
+            ],
+            "family": [
+                "*nods* Yes, my mom used to get bad headaches. She called them migraines. She would have to lie down in a dark room when they came on.",
+                "*thinks for a moment* No, no one in my family has had any serious neurological conditions that I'm aware of. Just the headaches my mom had."
+            ],
+            "symptoms": [
+                "*looks concerned* Sometimes I do feel a bit nauseous with the headaches, especially if they're really bad. I haven't actually thrown up, though.",
+                "*squints slightly* Light can definitely make it worse. Bright computer screens are the worst - which is tough given my job.",
+                "*hesitates* I have noticed I'm more irritable lately. My wife says I'm not myself. I've been snapping at the kids over little things, which isn't like me.",
+                "*thinking* No, I haven't noticed any weakness or numbness. Just the headaches and sometimes feeling a bit dizzy."
+            ]
+        };
 
-<!-- Add this JavaScript to your chat.js file or create a new one -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const userInput = document.getElementById('user-input');
-    const sendButton = document.getElementById('send-message');
-    const chatMessages = document.getElementById('chat-messages');
-    const questionsCount = document.getElementById('questions-count');
-    
-    let remainingQuestions = 3;
-    
-    // Update the count display
-    function updateQuestionCount() {
-        questionsCount.textContent = remainingQuestions;
-        
-        if (remainingQuestions <= 0) {
-            userInput.disabled = true;
-            sendButton.disabled = true;
+        // Simple simulation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const userInput = document.getElementById('user-input');
+            const sendButton = document.getElementById('send-message');
+            const chatMessages = document.querySelector('.chat-messages');
+            const startSimulationBtn = document.getElementById('start-simulation');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const loginLink = document.getElementById('login-link');
+            const loginModal = document.getElementById('login-modal');
+            const closeModal = document.querySelector('.close');
+            const modalTabs = document.querySelectorAll('.modal-tab');
+            const modalForms = document.querySelectorAll('.modal-form');
+            const demoLink = document.getElementById('demo-link');
             
-            // Add subscription message
-            setTimeout(() => {
-                const subscribeMessage = document.createElement('div');
-                subscribeMessage.className = 'message patient';
-                subscribeMessage.innerHTML = '<p>Thank you for trying our demo! To continue with this case and access our full library of neurological simulations, please subscribe to one of our plans.</p>';
-                chatMessages.appendChild(subscribeMessage);
-                
-                // Scroll to the bottom
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 1000);
-        }
-    }
-    
-    // Handle user message submission
-    function handleSubmit() {
-        const message = userInput.value.trim();
-        if (!message || remainingQuestions <= 0) return;
-        
-        // Add user message
-        const userMessageElement = document.createElement('div');
-        userMessageElement.className = 'message user';
-        userMessageElement.innerHTML = `<p>${message}</p>`;
-        chatMessages.appendChild(userMessageElement);
-        
-        // Clear input
-        userInput.value = '';
-        
-        // Create loading animation
-        const loadingMessage = document.createElement('div');
-        loadingMessage.className = 'message patient loading';
-        loadingMessage.innerHTML = '<p><em>Patient thinking...</em></p><div class="dots"><span></span><span></span><span></span></div>';
-        chatMessages.appendChild(loadingMessage);
-        
-        // Scroll to the bottom
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        
-        // Decrement question count
-        remainingQuestions--;
-        updateQuestionCount();
-        
-        // PLACEHOLDER: This is where you would call your OpenAI API
-        // For now, we'll simulate a response after a brief delay
-        setTimeout(() => {
-            // Remove loading animation
-            chatMessages.removeChild(loadingMessage);
-            
-            // Add patient response (placeholder - would come from API)
-            const responseElement = document.createElement('div');
-            responseElement.className = 'message patient';
-            
-            // Simulated response - in real implementation, this would come from your API call
-            let simulatedResponse;
-            if (message.toLowerCase().includes('headache') || message.toLowerCase().includes('pain')) {
-                simulatedResponse = "<em>*winces slightly*</em> The headaches usually start on the right side, like a pressure building up. They can get pretty intense, maybe a 7 out of 10 on the bad days.";
-            } else if (message.toLowerCase().includes('sleep') || message.toLowerCase().includes('stress')) {
-                simulatedResponse = "<em>*hesitates before answering*</em> My sleep hasn't been great lately. I've been working on this big project at work... probably getting about 5 hours a night. My wife says I've been grinding my teeth too.";
-            } else if (message.toLowerCase().includes('medication') || message.toLowerCase().includes('treatment')) {
-                simulatedResponse = "<em>*looks slightly embarrassed*</em> I've mostly been taking over-the-counter stuff. Probably too much ibuprofen, to be honest. I take it almost daily now. It helps for a few hours, but then the headache comes back.";
-            } else {
-                simulatedResponse = "<em>*thinks for a moment*</em> I'm not sure I understand what you're asking. Could you clarify what you'd like to know about my condition?";
-            }
-            
-            responseElement.innerHTML = `<p>${simulatedResponse}</p>`;
-            chatMessages.appendChild(responseElement);
-            
-            // Scroll to the bottom
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, 1500 + Math.random() * 1000); // Random delay between 1.5-2.5 seconds
-    }
-    
-    // Event listeners
-    sendButton.addEventListener('click', handleSubmit);
-    
-    userInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            handleSubmit();
-        }
-    });
-    
-    // Initial focus on input
-    userInput.focus();
-});
-</script>
+            // Tab functionality
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    button.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
