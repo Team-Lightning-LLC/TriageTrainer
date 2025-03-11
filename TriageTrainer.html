@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroCaseTrainer - Neurological Case Simulation System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        /* Clean, medical-themed styling */
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #1abc9c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light);
+        }
+        
+        .hero {
+            background-color: var(--secondary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #16a085;
+            transform: translateY(-2px);
+        }
+        
+        .features {
+            padding: 4rem 0;
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .how-it-works {
+            background-color: var(--secondary);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .how-it-works h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing {
+            padding: 4rem 0;
+        }
+        
+        .pricing h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pricing-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--dark);
+            margin: 1rem 0;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        
+        .pricing-card ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .pricing-card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+        }
+        
+        .popular {
+            position: relative;
+            border: 2px solid var(--accent);
+        }
+        
+        .popular::after {
+            content: "Most Popular";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .contact {
+            background-color: var(--light);
+            padding: 4rem 0;
+        }
+        
+        .contact h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .footer-links li {
+            margin: 0 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Demo Section Styles */
+        .demo {
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+        
+        .chat-container {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-messages {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+        
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 5px;
+        }
+        
+        .patient {
+            background-color: #e1f5fe;
+            border-left: 3px solid var(--primary);
+            margin-right: 2rem;
+        }
+        
+        .user {
+            background-color: #e8f5e9;
+            border-left: 3px solid var(--success);
+            margin-left: 2rem;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 0.5rem;
+            border-top: 1px solid #ddd;
+        }
+        
+        .chat-input input {
+            flex-grow: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 0.5rem;
+        }
+        
+        .chat-input button {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .patient-info {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        
+        .tab-button {
+            padding: 0.8rem 1.5rem;
+            background-color: #f5f5f5;
+            border: none;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+            margin-right: 0.5rem;
+        }
+        
+        .tab-button.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Login modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .close {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .modal-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-tab {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .modal-tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-form {
+            display: none;
+        }
+        
+        .modal-form.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Neuro<span>CaseTrainer</span></div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" id="demo-link">Try Demo</a></li>
+                    <li><a href="#" id="login-link">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Neurological Case Simulation System</h1>
+            <p>An advanced training platform for medical students, residents and practicing neurologists to develop and refine diagnostic skills through realistic patient simulations.</p>
+            <a href="#demo" class="btn">Try Demo Simulation</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Why Choose NeuroCaseTrainer?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Realistic Patient Encounters</h3>
+                    <p>Experience lifelike clinical scenarios that mirror the complexity and uncertainty of real neurological cases.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Adaptive Difficulty Levels</h3>
+                    <p>Progress from beginner to expert with our adaptive case complexity matrix that adjusts to your skill level.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Comprehensive Feedback</h3>
+                    <p>Receive detailed feedback on your diagnostic approach, questioning techniques, and clinical reasoning.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Diverse Case Library</h3>
+                    <p>Access hundreds of cases spanning the full spectrum of neurological conditions from common to rare presentations.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Evidence-Based Learning</h3>
+                    <p>Built on modern educational principles and current clinical practice guidelines.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Track Your Progress</h3>
+                    <p>Monitor your development over time with detailed performance analytics and improvement suggestions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Select Your Level</h3>
+                    <p>Choose from beginner, intermediate, advanced, or expert difficulty settings.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Engage With Patient</h3>
+                    <p>Interview the virtual patient through natural conversation to gather clinical information.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Develop Diagnosis</h3>
+                    <p>Form your clinical impression based on history, symptoms, and behavioral cues.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Receive Feedback</h3>
+                    <p>Get comprehensive feedback on your performance and suggestions for improvement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="demo" id="demo">
+        <div class="container">
+            <h2>Try a Demo Case</h2>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="case-info">Case Info</button>
+                <button class="tab-button" data-tab="simulation">Simulation</button>
+            </div>
+            
+            <div class="tab-content active" id="case-info">
+                <div class="patient-info">
+                    <h3>Demo Case: New Patient Consultation</h3>
+                    <p><strong>Patient:</strong> Michael Thompson, 45-year-old male</p>
+                    <p><strong>Setting:</strong> Neurology outpatient clinic</p>
+                    <p><strong>Chief Complaint:</strong> "I've been having these strange headaches for about 2 months now."</p>
+                    <p><strong>Difficulty Level:</strong> Intermediate</p>
+                    <p class="note">This is a simplified demonstration case. Full access provides more detailed cases with complete physical examination capabilities, lab ordering, and comprehensive feedback.</p>
+                </div>
+                <button class="btn" id="start-simulation">Start Simulation</button>
+            </div>
+            
+            <div class="tab-content" id="simulation">
+                <div class="chat-container">
+                    <div class="chat-messages">
+                        <div class="message patient">
+                            <p><em>*A middle-aged man sits in the examination chair, occasionally rubbing his right temple. He seems somewhat tense but makes good eye contact as you enter.*</em></p>
+                            <p>"Hi doctor, I'm Michael. Thanks for seeing me today. I've been dealing with these headaches that just won't quit."</p>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Type your question or response..." id="user-input">
+                        <button id="send-message">Send</button>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button class="btn" id="hint-btn">Get Hint</button>
+                    <button class="btn" id="diagnosis-btn">Submit Diagnosis</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Students</h3>
+                    <div class="price">$19<span>/month</span></div>
+                    <ul>
+                        <li>Access to 50+ beginner cases</li>
+                        <li>Basic performance tracking</li>
+                        <li>Core neurological conditions</li>
+                        <li>Monthly new cases</li>
+                        <li>Mobile access</li>
+                    </ul>
+                    <a href="#" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card popular">
+                    <h3>Residents</h3>
+                    <div class="price">$39<span>/month</span></div>
+                    <ul>
+                        <li>Access to 200+ cases (all levels)</li>
+                        <li>Advanced performance analytics</li>
+                        <li>Comprehensive condition coverage</li>
+                        <li>Weekly new cases</li>
+                        <li>Mobile access</li>
+                        <li>Community discussion forum</li>
+                    </ul>
+                    <a href="#" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Institutions</h3>
+                    <div class="price">Custom</div>
+                    <ul>
+                        <li>Unlimited access for all users</li>
+                        <li>Custom case development</li>
+                        <li>Integration with learning platforms</li>
+                        <li>Student/resident performance tracking</li>
+                        <li>Administrative dashboard</li>
+                        <li>Dedicated support</li>
+                    </ul>
+                    <a href="#" class="btn">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Your email">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject">
+                        <option value="">Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Technical Support</option>
+                        <option value="pricing">Pricing Question</option>
+                        <option value="partnership">Partnership Opportunity</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="Your message"></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo">Neuro<span>CaseTrainer</span></div>
+            <ul class="footer-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+            <p>&copy; 2025 NeuroCaseTrainer. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Account Access</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-tabs">
+                <div class="modal-tab active" data-form="login-form">Login</div>
+                <div class="modal-tab" data-form="signup-form">Sign Up</div>
+            </div>
+            <div class="modal-body">
+                <form class="modal-form active" id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <p style="margin-top: 1rem; text-align: center;">
+                        <a href="#" style="color: var(--primary);">Forgot password?</a>
+                    </p>
+                </form>
+                <form class="modal-form" id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-type">I am a:</label>
+                        <select id="user-type" required>
+                            <option value="">Select</option>
+                            <option value="student">Medical Student</option>
+                            <option value="resident">Resident</option>
+                            <option value="physician">Practicing Physician</option>
+                            <option value="educator">Medical Educator</option>
+                            <option value="other">Other Healthcare Professional</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Demo case responses
+        const caseResponses = {
+            "headache": [
+                "*winces slightly as he shifts in his chair* Yes, the headaches usually start on the right side of my head, right around here *points to his right temple*. They can get pretty bad, like a 7 or 8 out of 10.",
+                "*rubs his neck while thinking* They usually come on gradually over about 30 minutes. I'll start feeling a bit off, then it builds up. They typically last for several hours, sometimes all day if I don't take anything for it.",
+                "*looking slightly embarrassed* Well, I've been taking a lot of over-the-counter pain relievers. Probably more than I should, almost daily for the last month or so.",
+                "*appears thoughtful* Now that you mention it, sometimes I do see these flickering lights in my vision before the headache starts. Like a jagged line that blocks part of what I'm seeing. Is that important?",
+                "*shakes head* No history of head injuries. I've always been pretty healthy, just the usual stuff. Had my appendix out when I was in college."
+            ],
+            "lifestyle": [
+                "*sighs heavily* Work has been really stressful lately. I'm a software engineer, and we're on a tight deadline for a big project. I've been putting in 60-hour weeks for the past couple months.",
+                "*looks down* My sleep hasn't been great, to be honest. Usually 5-6 hours, and it's not quality sleep. I wake up a lot thinking about work stuff.",
+                "*shrugs* I probably have more coffee than I should. Maybe 4-5 cups throughout the day just to keep going. I have a couple glasses of wine most nights to help unwind.",
+                "*looks slightly embarrassed* Exercise? Not lately. I used to run regularly but haven't had time with this project. It's been about 3 months since I've done any real exercise."
+            ],
+            "family": [
+                "*nods* Yes, my mom used to get bad headaches. She called them migraines. She would have to lie down in a dark room when they came on.",
+                "*thinks for a moment* No, no one in my family has had any serious neurological conditions that I'm aware of. Just the headaches my mom had."
+            ],
+            "symptoms": [
+                "*looks concerned* Sometimes I do feel a bit nauseous with the headaches, especially if they're really bad. I haven't actually thrown up, though.",
+                "*squints slightly* Light can definitely make it worse. Bright computer screens are the worst - which is tough given my job.",
+                "*hesitates* I have noticed I'm more irritable lately. My wife says I'm not myself. I've been snapping at the kids over little things, which isn't like me.",
+                "*thinking* No, I haven't noticed any weakness or numbness. Just the headaches and sometimes feeling a bit dizzy."
+            ]
+        };
+
+        // Simple simulation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const userInput = document.getElementById('user-input');
+            const sendButton = document.getElementById('send-message');
+            const chatMessages = document.querySelector('.chat-messages');
+            const startSimulationBtn = document.getElementById('start-simulation');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const loginLink = document.getElementById('login-link');
+            const loginModal = document.getElementById('login-modal');
+            const closeModal = document.querySelector('.close');
+            const modalTabs = document.querySelectorAll('.modal-tab');
+            const modalForms = document.querySelectorAll('.modal-form');
+            const demoLink = document.getElementById('demo-link');
+            
+            // Tab functionality
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    button.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
